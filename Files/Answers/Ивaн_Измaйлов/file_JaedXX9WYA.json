@@ -1,0 +1,56 @@
+{
+      "list_report": [
+            {
+                  "name_test": "test sucesfull",
+                  "point_sum": 0,
+                  "time": 69,
+                  "list_test_report": [
+                        "OK",
+                        "OK"
+                  ],
+                  "state_report": true,
+                  "number_test": 3,
+                  "memory": 24.941
+            },
+            {
+                  "name_test": "test 4",
+                  "point_sum": 0,
+                  "time": 0,
+                  "list_test_report": [
+                        "WA"
+                  ],
+                  "state_report": false,
+                  "number_test": 4,
+                  "memory": 25.613
+            },
+            {
+                  "name_test": "test 5",
+                  "point_sum": 0,
+                  "time": 0,
+                  "list_test_report": [
+                        "WA"
+                  ],
+                  "state_report": false,
+                  "number_test": 5,
+                  "memory": 25.277
+            },
+            {
+                  "name_test": "skip test",
+                  "point_sum": 0,
+                  "time": 0,
+                  "list_test_report": [],
+                  "state_report": false,
+                  "number_test": 5,
+                  "memory": 0
+            },
+            {
+                  "name_test": "skip test",
+                  "point_sum": 0,
+                  "time": 0,
+                  "list_test_report": [],
+                  "state_report": false,
+                  "number_test": 5,
+                  "memory": 0
+            }
+      ]
+}

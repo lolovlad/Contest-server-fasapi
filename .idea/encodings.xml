@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Classes/CheckAnswer" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Classes/DataBaseEngin.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Classes/JsonReadFile.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Classes/JsonView.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Classes/PathFileDir.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Classes/StartDataBase.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Interfase" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/MainServer/DataBaseModels/Answer.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/MainServer/DataBaseModels/Contest.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/MainServer/DataBaseModels/Task.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/MainServer/DataBaseModels/Team.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/MainServer/DataBaseModels/TypeCompilation.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/MainServer/DataBaseModels/User.py" charset="windows-1251" />
+  </component>
+</project>
