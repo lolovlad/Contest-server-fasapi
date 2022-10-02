@@ -1,12 +1,12 @@
 from typing import List
-from ..PathFileDir import PathFileDir
 import subprocess
+from Classes.PathExtend import PathExtend
 import shlex
 
 
 class Compiler:
     def __init__(self, file_compiler: str):
-        self.__file_compiler = file_compiler
+        self.__file_compiler: PathExtend = PathExtend(file_compiler)
         self.__commands_preprocess: List[str] = []
         self.__start_file_program: str = ""
         self.__command: str = ""
@@ -16,7 +16,7 @@ class Compiler:
         return self.__command
 
     def __split_commands(self):
-        with open(self.__file_compiler, "r") as file:
+        with open(self.__file_compiler.abs_path(), "r") as file:
             lines = file.readlines()
             self.__commands_preprocess = lines[:-1]
             self.__start_file_program = lines[-1]

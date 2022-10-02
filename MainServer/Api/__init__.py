@@ -7,6 +7,7 @@ from .contests import router as contest_router
 from .tasks import router as task_router
 from .type_compilation import router as type_compilation_router
 from .answers import router as answers_router
+from .compiler import router as compiler_router
 
 router = APIRouter()
 router.include_router(users_router)
@@ -17,3 +18,4 @@ router.include_router(contest_router)
 router.include_router(task_router)
 router.include_router(type_compilation_router)
 router.include_router(answers_router)
+router.include_router(compiler_router)

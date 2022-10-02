@@ -1,6 +1,5 @@
 from ..CheckAnswer.OutputStream import OutputStream
 from ..CheckAnswer.OutputFileStream import OutputFileStream
-from ..PathFileDir import PathFileDir
 
 
 class OutputData:

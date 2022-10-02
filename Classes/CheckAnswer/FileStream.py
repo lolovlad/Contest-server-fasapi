@@ -1,4 +1,4 @@
-from ..PathFileDir import PathFileDir
+from ..PathExtend import PathExtend
 from subprocess import Popen
 
 
@@ -8,5 +8,6 @@ class FileStream:
         self.__name_file = "input.txt"
 
     def start_stream(self, input_data):
-        PathFileDir.write_file(f"{self.__name_dir}/{self.__name_file}", "\n".join(input_data))
+        path_file = PathExtend(f"{self.__name_dir}/{self.__name_file}")
+        path_file.write_file("\n".join(input_data))
         return None

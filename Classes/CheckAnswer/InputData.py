@@ -1,6 +1,5 @@
 from ..CheckAnswer.InputStream import InputStream
 from ..CheckAnswer.FileStream import FileStream
-from ..PathFileDir import PathFileDir
 
 
 class InputData:

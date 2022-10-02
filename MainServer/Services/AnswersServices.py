@@ -8,7 +8,7 @@ from Classes.Models.Report import Report
 from ..tables import Answer, Contest, ContestRegistration, Task
 from ..database import get_session
 
-from Classes.PathFileDir import PathFileDir
+from Classes.PathExtend import PathExtend
 from Classes.JsonReadFile import JsonFileParser
 
 from Classes.CheckAnswer.CheckingAnswers import CreateAnswers
@@ -94,17 +94,17 @@ class AnswersServices:
             ContestRegistration.id_user == answer_data.id_user
         ).first()
 
-        name_file = PathFileDir.create_file_name(answer_data.extension_file)
-        name_file = PathFileDir.abs_path(f"Answers/{PathFileDir.translate_name_file(contest.user.name)}_"
-                                         f"{PathFileDir.translate_name_file(contest.user.sename)}/{name_file}")
-
-        PathFileDir.write_file(name_file, answer_data.file, "wb")
+        name_file = PathExtend.create_file_name(answer_data.extension_file)
+        string_path_file = f"Answers/{contest.user.name}_{contest.user.sename}/{name_file}"
+        path_file = PathExtend("Answers", f"{contest.user.name}_{contest.user.sename}", name_file)
+        path_file.create_folder()
+        path_file.write_file(answer_data.file, "wb")
 
         answer = Answer(id_user=contest.id_user,
                         id_contest=contest.id_contest,
                         id_task=answer_data.id_task,
                         id_team=contest.id_team,
-                        path_programme_file=str(name_file),
+                        path_programme_file=string_path_file,
                         type_compiler=answer_data.type_compilation)
 
         self.__session.add(answer)

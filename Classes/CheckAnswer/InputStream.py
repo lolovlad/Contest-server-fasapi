@@ -1,7 +1,3 @@
-from ..PathFileDir import PathFileDir
-from subprocess import Popen
-
-
 class InputStream:
     def __init__(self, name_dir):
         self.__name_dir = name_dir

@@ -50,9 +50,9 @@ class ContestRegistration(base):
     id_team = Column(Integer, ForeignKey('team.id'), default=0)
     state_contest = Column(Integer, nullable=False, default=1)
 
-    user = relationship('User', lazy='joined', join_depth=2, back_populates="contests")
-    contest = relationship('Contest', lazy='joined', join_depth=2, back_populates="users")
-    team = relationship('Team', lazy='joined', join_depth=2, back_populates="contests")
+    user = relationship('User', join_depth=2, back_populates="contests")
+    contest = relationship('Contest', join_depth=2, back_populates="users")
+    team = relationship('Team', join_depth=2, back_populates="contests")
 
 
 class TeamRegistration(base):
@@ -73,8 +73,7 @@ class Team(base):
     is_solo = Column(Boolean, nullable=False, default=True)
 
     users = relationship("TeamRegistration", back_populates="team")
-    contests = relationship("ContestRegistration", back_populates="team",
-                            collection_class=list, join_depth=2)
+    contests = relationship("ContestRegistration", back_populates="team")
 
 
 class Contest(base):

@@ -18,7 +18,7 @@ from .Grading import Grading, Rating
 from .VirtualEnvironment import VirtualEnvironment
 from .Compiler import Compiler
 
-from ..PathFileDir import PathFileDir
+from ..PathExtend import PathExtend
 
 
 class CreateAnswers:
@@ -43,7 +43,7 @@ class CheckingAnswer:
         self.__type_output = type_output
         self.__timeout = timeout
         self.__path_compiler = path_compiler
-        self.__file_answer = PathFileDir.str_to_abs_path(file_answer)
+        self.__file_answer = PathExtend(file_answer)
         self.__queue = []
         self.__report: Report = Report()
         self.__grading: Grading = Grading(size)
@@ -147,7 +147,7 @@ def check_answer(answer_id):
 
         path_file_test = task.path_test_file
 
-        dir_path_file = PathFileDir.path_file(answer.path_programme_file)
+        dir_path_file = PathExtend(answer.path_programme_file).path_file()
 
         type_input = task.type_input
         type_output = task.type_output
@@ -161,12 +161,12 @@ def check_answer(answer_id):
         reports = Report()
         reports.list_report = answer_json
 
-        path_file_report = f"{dir_path_file}/{PathFileDir.create_file_name('json')}"
+        path_file_report = f"{dir_path_file}/{PathExtend.create_file_name('json')}"
 
         with open(path_file_report, 'w') as outfile:
             dump(loads(reports.json()), outfile, indent=6)
 
-        answer.path_report_file = str(PathFileDir.abs_path(path_file_report))
+        answer.path_report_file = path_file_report
 
         points = 0
         times = 0

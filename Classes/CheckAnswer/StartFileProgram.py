@@ -30,21 +30,23 @@ class StartFileProgram:
         try:
             self.__create_sub_proces()
             memory = []
-            for i in range(5):
-                sleep(0.5)
-                memory.append(round((self.__process.memory_full_info().uss / 2**20), 3))
-            print(memory, "ffffffffffffffffff")
             start_time = time()
-            outs, errs = self.__process.communicate(input=input_data, timeout=time_out * 1000)
+            outs = self.__process.communicate(input=input_data, timeout=time_out * 1000)
             end_time = time() - start_time
-            outs = self.__output_stream.read_output(str(outs.decode()))
-            errs = str(errs.decode())
+            answer = self.__output_stream.read_output(str(outs[0].decode()))
+            outSecond = str(outs[1].decode()).replace("\n", "")
+            if outSecond.isdigit():
+                memory.append(round((int(outSecond) / 2**10), 3))
+                errs = ""
+            else:
+                memory.append(0)
+                errs = outSecond
             if len(errs) == 0:
                 errs = 0
             elif len(errs) > 0:
                 errs = 1
             report = {
-                "out": outs,
+                "out": answer,
                 "errors": Rating.OK,
                 "time": end_time * 1000,
                 "memory": [max(memory)]

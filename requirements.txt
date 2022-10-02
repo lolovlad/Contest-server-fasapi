@@ -5,3 +5,5 @@ python-dotenv
 sqlalchemy
 werkzeug
 psutil
+python-jose
+python-multipart

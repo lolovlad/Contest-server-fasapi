@@ -55,7 +55,7 @@ class ContestDelete(BaseContest):
     id: int
 
 
-class ContestPutUsers(BaseContest):
+class ContestPutUsers(BaseModel):
     id: int
     users: List[UserContest]
 

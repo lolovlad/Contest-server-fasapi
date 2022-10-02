@@ -9,7 +9,7 @@ from typing import List
 from sqlalchemy.orm import Session
 from ..tables import Contest, ContestRegistration, User, Task, Answer, Team
 from ..database import get_session
-from Classes.PathFileDir import PathFileDir
+from Classes.PathExtend import PathExtend
 from Classes.JsonView import JsonView
 
 from datetime import timedelta
@@ -135,12 +135,15 @@ class ContestsServices:
             self.__session.delete(user)
 
         for task in contest.tasks:
-            PathFileDir.delete_file(task.path_test_file)
+            path_file = PathExtend(task.path_test_file)
+            path_file.delete_file()
             self.__session.delete(task)
 
         for answer in answers:
-            PathFileDir.delete_file(answer.path_report_file)
-            PathFileDir.delete_file(answer.path_programme_file)
+            path_file_test = PathExtend(answer.path_test_file)
+            path_file_programme_file = PathExtend(answer.path_programme_file)
+            path_file_test.delete_file()
+            path_file_programme_file.delete_file()
             self.__session.delete(answer)
 
         self.__session.delete(contest)

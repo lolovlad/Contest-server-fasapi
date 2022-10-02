@@ -3,6 +3,8 @@ from fastapi import APIRouter, Depends
 from typing import List
 
 from ..Models.Team import TeamGet, TeamPost, TeamDelete, TeamsContest
+from ..Models.User import UserGet, TypeUser
+from ..Services.LoginServices import get_current_user
 from ..Services.TeamsServices import TeamsServices
 
 
@@ -21,13 +23,17 @@ def post_team(team_data: TeamPost, team_services: TeamsServices = Depends()):
 
 
 @router.put("/", response_model=TeamGet)
-def put_team(team_data: TeamGet, team_services: TeamsServices = Depends()):
-    return team_services.update_team(team_data)
+def put_team(team_data: TeamGet, team_services: TeamsServices = Depends(),
+             user: UserGet = Depends(get_current_user)):
+    if user.type == TypeUser.ADMIN:
+        return team_services.update_team(team_data)
 
 
 @router.delete("/{id_team}", response_model=TeamDelete)
-def delete_team(id_team: int, team_services: TeamsServices = Depends()):
-    return team_services.delete_team(id_team)
+def delete_team(id_team: int, team_services: TeamsServices = Depends(),
+                user: UserGet = Depends(get_current_user)):
+    if user.type == TypeUser.ADMIN:
+        return team_services.delete_team(id_team)
 
 
 @router.get("/in_contest/{id_contest}", response_model=TeamsContest)
