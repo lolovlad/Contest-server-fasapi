@@ -1,1 +1,1 @@
-C:/Python310/python.exe {path_file}
+/usr/bin/time -f %M python3 {path_file}

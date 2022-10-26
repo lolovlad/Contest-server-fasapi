@@ -1,2 +1,2 @@
 g++ -o {path_folder}/{name_file} {path_file}
-{path_folder}/{name_file}
+/usr/bin/time -f %M {path_folder}/{name_file}
