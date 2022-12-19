@@ -45,8 +45,9 @@ def registration_users_contest(contest_data: ContestPutUsers, contest_services: 
 
 
 @router.get("/contests_by_user_id/{id_user}", response_model=List[Menu])
-def contests_by_user_id(id_user: int, contest_services: ContestsServices = Depends()):
-    return contest_services.get_list_contest_by_user_id(id_user)
+def contests_by_user_id(id_user: int, contest_services: ContestsServices = Depends(),
+                        user: UserGet = Depends(get_current_user)):
+    return contest_services.get_list_contest_by_user_id(user.id)
 
 
 @router.get("/contest_page/{id_contest}", response_model=ContestGetPage)
@@ -57,7 +58,7 @@ def contest_page(id_contest: int, contest_services: ContestsServices = Depends()
 @router.put("/close_to_user_contest/{id_contest}/{id_user}", response_model=ContestGet)
 def close_to_user_contest(id_contest: int, id_user: int, contest_services: ContestsServices = Depends(),
                           user: UserGet = Depends(get_current_user)):
-    return contest_services.close_contest_to_user(id_contest, id_user)
+    return contest_services.close_contest_to_user(id_contest, user.id)
 
 
 @router.get("/report_total/{id_contest}", response_model=List[ReportTotal])
